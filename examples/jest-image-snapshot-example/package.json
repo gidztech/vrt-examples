@@ -1,5 +1,5 @@
 {
-  "name": "jest-example",
+  "name": "jest-image-snapshot-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^23.1.0"
-  },
-  "dependencies": {
     "express": "^4.16.3",
-    "extract-zip": "^1.6.7",
+    "jest": "^23.1.0",
     "jest-environment-node": "^23.1.0",
     "jest-image-snapshot": "^2.4.2",
     "puppeteer": "^1.4.0",
     "puppeteer-extensions": "^1.0.0"
-  }
+  },
+  "dependencies": {}
 }
