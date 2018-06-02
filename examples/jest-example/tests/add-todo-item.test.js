@@ -1,5 +1,8 @@
+const path = require('path');
 const initExtensions = require('puppeteer-extensions');
-// const container = '.todoapp';
+const { setSnapshotDir } = require('../snapshot-settings');
+
+const container = '.todoapp';
 const input = 'header input';
 const listItem = '.todo-list li';
 const firstItem = `${listItem}:nth-of-type(1)`;
@@ -11,6 +14,14 @@ const todoCount = '.todo-count';
 describe('Add a todo item', () => {
     let page;
     let extensions;
+
+    const visualCheck = async selector => {
+        const element = await page.$(selector);
+        const image = await element.screenshot();
+        expect(image).toMatchImageSnapshot(
+            setSnapshotDir(path.join(__dirname, 'snapshots'))
+        );
+    };
 
     beforeAll(async () => {
         page = await global.__BROWSER__.newPage();
@@ -29,14 +40,14 @@ describe('Add a todo item', () => {
         await page.keyboard.press('Enter');
         await page.waitForSelector(firstItem);
         expect(await extensions.getText(firstItem)).toContain('My first item');
-        // await assert.visual(container);
+        await visualCheck(container);
     });
     it('clicking checkbox marks item as complete', async () => {
         await page.waitForSelector(firstItemToggle);
         await page.click(firstItemToggle);
 
         // something to break the tests
-        await page.addStyleTag({ content: '.header { padding-top: 50px; }' });
+        // await page.addStyleTag({ content: '.header { padding-top: 50px; }' });
 
         await extensions.waitForNthSelectorAttributeValue(
             listItem,
@@ -44,7 +55,7 @@ describe('Add a todo item', () => {
             'class',
             'completed'
         );
-        // await assert.visual(container);
+        await visualCheck(container);
     });
     it('typing more text and hitting enter adds a second item', async () => {
         await page.type(input, 'My second item');
@@ -53,16 +64,16 @@ describe('Add a todo item', () => {
         expect(await extensions.getText(secondItem)).toContain(
             'My second item'
         );
-        // await assert.visual(container);
+        visualCheck(container);
     });
     it('hovering over first item shows x button', async () => {
         await page.hover(firstItem);
-        // await assert.visual(container);
+        await visualCheck(container);
     });
     it('clicking on first item x button removes it from the list', async () => {
         await page.click(firstItemRemoveButton);
         await extensions.waitForElementCount(listItem, 1);
         expect(await extensions.getText(todoCount)).toContain('1 item left');
-        // await assert.visual(container);
+        await visualCheck(container);
     });
 });
