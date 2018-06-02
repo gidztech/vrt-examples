@@ -7,4 +7,6 @@ npm-debug.log
 node_modules
 app
 tmp/puppeteerEndpoint
-examples/jest-example/tests/snapshots
+examples/jest-example/tests/screenshots
+examples/muppeteer-example/tests/screenshots
+examples/muppeteer-example/tests/report

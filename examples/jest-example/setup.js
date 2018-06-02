@@ -11,7 +11,7 @@ module.exports = async () => {
         res.sendFile('index.html');
     });
 
-    global.__SERVER__ = app.listen(8080);
+    global.__SERVER__ = app.listen(3000);
 
     const browser = await puppeteer.launch({});
     global.__PUPPETEER__ = puppeteer;

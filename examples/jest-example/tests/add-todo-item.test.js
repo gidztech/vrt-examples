@@ -1,6 +1,5 @@
 const path = require('path');
-const initExtensions = require('puppeteer-extensions');
-const { setSnapshotDir } = require('../snapshot-settings');
+const { initPage, teardownPage, setSnapshotDir } = require('../test-settings');
 
 const container = '.todoapp';
 const input = 'header input';
@@ -19,20 +18,16 @@ describe('Add a todo item', () => {
         const element = await page.$(selector);
         const image = await element.screenshot();
         expect(image).toMatchImageSnapshot(
-            setSnapshotDir(path.join(__dirname, 'snapshots'))
+            // this is a temp hack until it's possible to globally set the snapshots directory, not just per test
+            setSnapshotDir(path.join(__dirname, 'screenshots'))
         );
     };
 
     beforeAll(async () => {
-        page = await global.__BROWSER__.newPage();
-        await page.goto('http://localhost:8080/');
-        extensions = initExtensions(page);
-        await extensions.turnOffAnimations();
-    }, 5000);
-
-    afterAll(async () => {
-        await page.close();
+        ({ page, extensions } = await initPage(global.__BROWSER__));
     });
+
+    afterAll(async () => teardownPage(page));
 
     it('typing text and hitting enter key adds new item', async () => {
         await page.waitForSelector(input);
@@ -64,7 +59,7 @@ describe('Add a todo item', () => {
         expect(await extensions.getText(secondItem)).toContain(
             'My second item'
         );
-        visualCheck(container);
+        await visualCheck(container);
     });
     it('hovering over first item shows x button', async () => {
         await page.hover(firstItem);
