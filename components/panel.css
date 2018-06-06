@@ -1,0 +1,41 @@
+.panel {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    background-color: #fff;
+    border: 1px solid #758796;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.panel-heading {
+    color: #fff;
+    background-color: #437bad;
+    padding: 10px;
+    border-bottom: 1px solid transparent;
+}
+
+.panel-heading:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.icon {
+    float: left;
+    margin-top: 1px;
+}
+
+.panel-heading svg {
+    height: 18px;
+    width: 18px;
+}
+
+.panel-body {
+    font-size: 14px;
+    padding: 10px;
+}
+
+.title {
+    float: left;
+    margin: 0 0 0 8px;
+    font-size: 18px;
+}
