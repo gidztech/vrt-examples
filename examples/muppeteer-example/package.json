@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node run-tests.js"
+    "unit-test": "node run-tests.js -u",
+    "e2e-test": "node run-tests.js - e"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
+    "commander": "^2.15.1",
     "express": "^4.16.3",
     "muppeteer": "^1.1.1-beta"
-  }
+  },
+  "devDependencies": {}
 }

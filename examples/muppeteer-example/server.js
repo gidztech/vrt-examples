@@ -2,22 +2,25 @@ const express = require('express');
 const path = require('path');
 const { networkInterfaces } = require('os');
 
-const app = express();
-
-app.use(express.static(path.join(__dirname, '../../', 'app')));
-
-app.get('/', (req, res) => {
-    res.sendFile('index.html');
-});
-
 module.exports = {
-    start: port =>
-        new Promise(resolve => {
+    start: ({ port = 3000, testType = 'unit' } = {}) => {
+        const app = express();
+
+        const directory = testType === 'unit' ? 'dist' : 'app';
+
+        app.use(express.static(path.join(__dirname, '../../', directory)));
+
+        app.get('/', (req, res) => {
+            res.sendFile('index.html');
+        });
+
+        return new Promise(resolve => {
             const server = app.listen(port, () => {
                 console.log(`Test server started on port ${port}`);
                 resolve(server);
             });
-        }),
+        });
+    },
     stop: server => {
         server.close();
         console.log('Test server stopped');

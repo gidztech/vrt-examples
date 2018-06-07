@@ -1,0 +1,7 @@
+.app p:first-child { 
+    margin-top: 0;
+}
+
+.app p:last-child { 
+    margin-bottom: 0;
+}
