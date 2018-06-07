@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "unit-test": "jest unit",
+    "e2e-test": "jest e2e"
   },
   "author": "",
   "license": "MIT",

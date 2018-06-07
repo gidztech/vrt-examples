@@ -1,5 +1,5 @@
 const path = require('path');
-const { initPage, teardownPage, setSnapshotDir } = require('../test-settings');
+const { initPage, teardownPage, setSnapshotDir } = require('../../test-settings');
 
 const container = '.todoapp';
 const input = 'header input';

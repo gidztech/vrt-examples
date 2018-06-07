@@ -10,4 +10,4 @@ examples/jest-image-snapshot-example/tmp/puppeteerEndpoint
 examples/muppeteer-example/tests/**/report
 examples/muppeteer-example/tests/**/screenshots/**/*-diff.png
 examples/muppeteer-example/tests/**/screenshots/**/*-current.png
-
+examples/jest-image-snapshot-example/tests/**/screenshots/__diff_output__

@@ -8,9 +8,9 @@
     "component-dev": "webpack-dev-server --config ./webpack.config.js --mode development",
     "component-build": "webpack --mode production",
     "component-test-muppeteer": "npm run component-build; cd examples/muppeteer-example; npm run unit-test",
-    "component-test-jest": "npm run component-build; cd examples/jest-image-snapshot-example; jest",
+    "component-test-jest": "npm run component-build; cd examples/jest-image-snapshot-example; npm run unit-test",
     "e2e-test-muppeteer": "npm run component-build; cd examples/muppeteer-example; npm run e2e-test",
-    "e2e-test-jest": "npm run component-build; cd examples/jest-image-snapshot-example; jest",
+    "e2e-test-jest": "npm run component-build; cd examples/jest-image-snapshot-example; npm run e2e-test",
     "lint": "eslint **/*.js --fix",
     "prettier": "prettier --write --single-quote --tab-width=4 */**.js",
     "precommit": "lint-staged"
