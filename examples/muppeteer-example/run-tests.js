@@ -18,14 +18,15 @@ program
 
     const testDir = testType === 'unit' ? 'tests/unit' : 'tests/e2e';
 
-    await ConfigureLauncher({
-        testDir,
-        testFilter: 'test.js',
+    const launcher = await ConfigureLauncher({
+        testPathPattern: `${testDir}/*.test.js`,
         reportDir: `${testDir}/report`,
         componentTestUrlFactory: () => `http://${server.IP}:3000`,
         visualThreshold: 0.05,
         useDocker: true,
         dockerChromeVersion: '65.0.3325.181',
         onFinish: () => server.stop(serverInstance)
-    }).launch();
+    });
+
+    await launcher.launch();
 })();
