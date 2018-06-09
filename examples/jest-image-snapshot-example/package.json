@@ -17,5 +17,7 @@
     "puppeteer": "^1.4.0",
     "puppeteer-extensions": "^1.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
 }
