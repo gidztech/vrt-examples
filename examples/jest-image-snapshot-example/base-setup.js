@@ -6,6 +6,7 @@ const { promisify } = require('util');
 const mkdirp = require('mkdirp');
 
 const mkdirIfRequired = async dir => {
+    console.log(dir);
     if (!(await promisify(fs.exists)(dir))) {
         await mkdirp(dir);
     }
@@ -27,10 +28,11 @@ module.exports = testType => async () => {
     global.__PUPPETEER__ = puppeteer;
     global.__BROWSER__ = browser;
 
-    await mkdirIfRequired(path);
+    const tmpDir = path.join(__dirname, 'tmp');
+    await mkdirIfRequired(tmpDir);
 
     fs.writeFileSync(
-        path.join(__dirname, 'tmp', 'puppeteerEndpoint'),
+        path.join(tmpDir, 'puppeteerEndpoint'),
         browser.wsEndpoint()
     );
 };
