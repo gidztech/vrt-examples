@@ -1,14 +1,9 @@
 const path = require('path');
-const { initPage, teardownPage, setSnapshotDir } = require('../../test-settings');
-
-const container = '.todoapp';
-const input = 'header input';
-const listItem = '.todo-list li';
-const firstItem = `${listItem}:nth-of-type(1)`;
-const firstItemToggle = `${firstItem} .toggle`;
-const firstItemRemoveButton = `${firstItem} button`;
-const secondItem = `${listItem}:nth-of-type(2)`;
-const todoCount = '.todo-count';
+const {
+    initPage,
+    teardownPage,
+    setSnapshotDir
+} = require('../../test-settings');
 
 describe('Panel tests', async () => {
     let page;
