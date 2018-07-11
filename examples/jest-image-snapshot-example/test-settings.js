@@ -9,15 +9,11 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
 expect.extend({ toMatchImageSnapshot });
 
 module.exports = {
-    initPage: async browser => {
-        const page = await browser.newPage();
+    initPage: async page => {
         await page.goto('http://localhost:3000/');
         const extensions = initExtensions(page);
         await extensions.turnOffAnimations();
         return { page, extensions };
-    },
-    teardownPage: async page => {
-        await page.close();
     },
     setSnapshotDir: dir => ({
         customSnapshotsDir: dir
