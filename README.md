@@ -2,7 +2,7 @@
 
 This repository provides example usages of different open-source VRT libraries and frameworks available to use.
 
-All examples use the same base project, a locally served copy of the [React TodoMVC](http://todomvc.com/examples/react/#/) project. 
+All examples use the same base project, a locally served React component for the UI unit tests and copy of the [React TodoMVC](http://todomvc.com/examples/react/#/) project for the end-to-end tests. 
 
 Instructions for running tests and configurations are provided in each example.
 
