@@ -13,11 +13,10 @@
     "express": "^4.16.3",
     "jest": "^23.1.0",
     "jest-environment-node": "^23.1.0",
-    "jest-image-snapshot": "^2.4.2",
+    "jest-image-snapshot": "^2.4.3",
+    "jest-puppeteer": "^3.2.1",
     "puppeteer": "^1.4.0",
     "puppeteer-extensions": "^1.0.0"
   },
-  "dependencies": {
-    "mkdirp": "^0.5.1"
-  }
+  "dependencies": {}
 }

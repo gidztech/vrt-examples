@@ -1,28 +1,15 @@
-const path = require('path');
-const {
-    initPage,
-    teardownPage,
-    setSnapshotDir
-} = require('../../test-settings');
+const configureTest = require('../../test-settings');
 
 describe('Panel tests', async () => {
-    let page;
     let extensions;
-
-    const visualCheck = async selector => {
-        const element = await page.$(selector);
-        const image = await element.screenshot();
-        expect(image).toMatchImageSnapshot(
-            // this is a temp hack until it's possible to globally set the snapshots directory, not just per test
-            setSnapshotDir(path.join(__dirname, 'screenshots'))
-        );
-    };
+    let visualCheck;
 
     beforeAll(async () => {
-        ({ page, extensions } = await initPage(global.__BROWSER__));
+        ({ page, extensions, visualCheck } = await configureTest(
+            __dirname,
+            page
+        ));
     });
-
-    afterAll(async () => teardownPage(page));
 
     describe('Simple mode', async () => {
         const panelContainer = '.first-usage .panel';
@@ -62,5 +49,5 @@ describe('Panel tests', async () => {
         it('title, body and icon appear correctly', async () => {
             await visualCheck(panelContainer);
         });
-    })
+    });
 });

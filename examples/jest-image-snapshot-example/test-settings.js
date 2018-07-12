@@ -1,3 +1,4 @@
+const path = require('path');
 const initExtensions = require('puppeteer-extensions');
 const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 
@@ -8,18 +9,21 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
 
 expect.extend({ toMatchImageSnapshot });
 
-module.exports = {
-    initPage: async browser => {
-        const page = await browser.newPage();
-        await page.goto('http://localhost:3000/');
-        const extensions = initExtensions(page);
-        await extensions.turnOffAnimations();
-        return { page, extensions };
-    },
-    teardownPage: async page => {
-        await page.close();
-    },
-    setSnapshotDir: dir => ({
-        customSnapshotsDir: dir
-    })
+const createVisualCheckFn = dir => {
+    return async function(selector) {
+        const element = await page.$(selector);
+        const image = await element.screenshot();
+        expect(image).toMatchImageSnapshot(
+            // this is a temp hack until it's possible to globally set the snapshots directory, not just per test
+            { customSnapshotsDir: path.join(dir, 'screenshots') }
+        );
+    };
+};
+
+module.exports = async (dir, page) => {
+    await page.goto('http://localhost:3000/');
+    const extensions = initExtensions(page);
+    await extensions.turnOffAnimations();
+    const visualCheck = createVisualCheckFn(dir);
+    return { page, extensions, visualCheck };
 };
