@@ -1,5 +1,5 @@
 const path = require('path');
-const { initPage, teardownPage, setSnapshotDir } = require('../../test-settings');
+const { initPage, setSnapshotDir } = require('../../test-settings');
 
 const container = '.todoapp';
 const input = 'header input';
@@ -11,7 +11,6 @@ const secondItem = `${listItem}:nth-of-type(2)`;
 const todoCount = '.todo-count';
 
 describe('Add a todo item', () => {
-    let page;
     let extensions;
 
     const visualCheck = async selector => {
@@ -24,10 +23,8 @@ describe('Add a todo item', () => {
     };
 
     beforeAll(async () => {
-        ({ page, extensions } = await initPage(global.__BROWSER__));
+        ({ page, extensions } = await initPage(page));
     });
-
-    afterAll(async () => teardownPage(page));
 
     it('typing text and hitting enter key adds new item', async () => {
         await page.waitForSelector(input);
