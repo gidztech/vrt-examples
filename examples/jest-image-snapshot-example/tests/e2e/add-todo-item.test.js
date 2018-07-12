@@ -1,5 +1,4 @@
-const path = require('path');
-const { initPage, setSnapshotDir } = require('../../test-settings');
+const configureTest = require('../../test-settings');
 
 const container = '.todoapp';
 const input = 'header input';
@@ -12,18 +11,13 @@ const todoCount = '.todo-count';
 
 describe('Add a todo item', () => {
     let extensions;
-
-    const visualCheck = async selector => {
-        const element = await page.$(selector);
-        const image = await element.screenshot();
-        expect(image).toMatchImageSnapshot(
-            // this is a temp hack until it's possible to globally set the snapshots directory, not just per test
-            setSnapshotDir(path.join(__dirname, 'screenshots'))
-        );
-    };
+    let visualCheck;
 
     beforeAll(async () => {
-        ({ page, extensions } = await initPage(page));
+        ({ page, extensions, visualCheck } = await configureTest(
+            __dirname,
+            page
+        ));
     });
 
     it('typing text and hitting enter key adds new item', async () => {
