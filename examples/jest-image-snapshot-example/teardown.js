@@ -1,4 +1,4 @@
-const { teardown: teardownPuppeteer } = require('jest-environment-puppeteer');
+const { teardown: teardownPuppeteer } = require('jest-puppeteer-docker');
 
 module.exports = async function globalTeardown() {
     global.__SERVER__.close();

@@ -21,7 +21,7 @@ const createVisualCheckFn = dir => {
 };
 
 module.exports = async (dir, page) => {
-    await page.goto('http://localhost:3000/');
+    await page.goto('http://docker.for.mac.host.internal:3000');
     const extensions = initExtensions(page);
     await extensions.turnOffAnimations();
     const visualCheck = createVisualCheckFn(dir);
