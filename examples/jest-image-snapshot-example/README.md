@@ -16,7 +16,7 @@ Run `npm install` to install the required dev dependencies.
 [puppeteer-extensions](https://github.com/HuddleEng/puppeteer-extensions) - Puppeteer convienence functions
 
 ## Run tests
-`npm run unit-test` - Test a small panel presentational component
+`npm run unit-test` - Test a small panel presentational component\
 `npm run e2e2-test` - Test an e2e TODO list application
 
 ![Running tests](https://i.imgur.com/LuJiz2g.png "Running tests")

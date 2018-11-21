@@ -1,4 +1,5 @@
 # VRT Examples
+[![Build Status](https://travis-ci.org/gidztech/vrt-examples.svg?branch=master)](https://travis-ci.org/gidztech/vrt-examples)
 
 This repository provides example usages of different open-source VRT libraries and frameworks available to use.
 
