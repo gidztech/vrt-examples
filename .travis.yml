@@ -13,11 +13,11 @@ jobs:
   include:
     - stage: "Jest tests"
       name: "Unit tests"
-      script: npm install; npm run jest-install; npm run component-test-jest
+      script: npm run jest-install; npm run component-test-jest
     - name: "End-to-end tests"
-      script: npm install; npm run jest-install; npm run e2e-test-jest
+      script: npm run jest-install; npm run e2e-test-jest
     - stage: "Muppeteer tests"
       name: "Unit tests"
-      script: npm install; npm run muppeteer-install; npm run component-test-muppeteer
+      script: npm run muppeteer-install; npm run component-test-muppeteer
     - name: "End-to-end tests"
-      script: npm install; npm run muppeteer-install; npm run e2e-test-muppeteer
+      script: npm run muppeteer-install; npm run e2e-test-muppeteer
