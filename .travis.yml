@@ -11,20 +11,13 @@ env:
   secure: "Bm7yr9RJCdQf3DNpASMxlIqV/xutD66kkuyx5ZAIp3QJpli3wjHbxZFqYspp7FfMrpYeDoFiVk5fzKVXHfA1WztSv8lEGju/HsHIBzqQSCbcVPLmnJmslILQgOl2Gge9WL/u2eDBpbPdYu2ZWrlCNJ2a9Pyqvw3k7NPNToGNdSu7KtjxXrrK9q3g67HPc4YYtqkShsDN1HywWphnRkSY0YITqy0ab94TRsaz/JuY4yTHe2sczdGjU1luttTFZKkkLZjkopcmNCcjnVoh28hu4NGCHldR8Aj49kXajGH5hkgObpGF0xBrKwf1Q87vzOetSSt9Y6Rm0PwYwc7YYIS8A7+856ABBYQaSUfFIexbsHeEWsMbJhbb4OPvC+c3e2XA174VtA5YIUd8TuRvaIaHvEahtoV1313eXLeo/mMIYSFU2BA2MGzxgN3Ekt+lce+RhJ2NaDqOwUFvyQMo99s3L24i1w5uwBIIC5t0C9SxlifD8VhEQIcOgZ0jnuAhOeArMYa+siTe2VXIe1tB4BiLn/roEBQd7XxYDP2I7WU77bFlv8N6R1i+lzeXM8fKk3cyC1BUl1VBoBUjcBHtQZlnDMQAlsulvMNyGH8NzhHAaFWP8C3KaAi8CVTMyWVNEf1fPS5GOJwaZX0W9TGhcgvn3sWVjTOlekwqgzmzwlWKNQ8="
 jobs:  
   include:
-    - stage: "Install dependencies"
-      name: "Install main dependencies"
-      script: npm install
-    - name: "Install Jest dependencies"
-      script: npm run jest-install
-    - name: "Install Muppeteer dependencies"
-      script: npm run muppeteer-install
     - stage: "Jest tests"
       name: "Unit tests"
-      script: npm run component-test-jest
+      script: npm install; npm run jest-install; npm run component-test-jest
     - name: "End-to-end tests"
-      script: npm run e2e-test-jest
+      script: npm install; npm run jest-install; npm run e2e-test-jest
     - stage: "Muppeteer tests"
       name: "Unit tests"
-      script: npm run component-test-muppeteer
+      script: npm install; npm run muppeteer-install; npm run component-test-muppeteer
     - name: "End-to-end tests"
-      script: npm run e2e-test-muppeteer
+      script: npm install; npm run muppeteer-install; npm run e2e-test-muppeteer
