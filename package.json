@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "node setup.js",
     "jest-install": "cd examples/jest-image-snapshot-example; npm install",
-    "muppeteer-install": "cd examples/muppeteer-example;; npm install",
+    "muppeteer-install": "cd examples/muppeteer-example; npm install",
     "component-dev": "webpack-dev-server --config ./webpack.config.js --mode development",
     "component-build": "webpack --mode production",
     "component-test-muppeteer": "npm run component-build; cd examples/muppeteer-example; npm run unit-test",
