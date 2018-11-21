@@ -1,22 +1,24 @@
 {
-  "name": "jest-image-snapshot-example",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "unit-test": "jest unit",
-    "e2e-test": "jest e2e"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "express": "^4.16.3",
-    "jest": "^23.1.0",
-    "jest-environment-node": "^23.1.0",
-    "jest-image-snapshot": "^2.4.3",
-    "jest-puppeteer": "^3.2.1",
-    "puppeteer": "^1.4.0",
-    "puppeteer-extensions": "^1.0.0"
-  },
-  "dependencies": {}
+    "name": "jest-image-snapshot-example",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "unit-test": "jest unit",
+        "e2e-test": "jest e2e"
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "express": "^4.16.3",
+        "jest": "^23.6.0",
+        "jest-html-reporter": "^2.4.2",
+        "jest-image-snapshot": "^2.7.0",
+        "jest-puppeteer-docker": "0.0.1-alpha.6",
+        "puppeteer": "^1.10.0",
+        "puppeteer-extensions": "^1.0.0",
+        "puppeteer-to-istanbul": "^1.2.2",
+        "remap-istanbul": "^0.11.1"
+    },
+    "dependencies": {}
 }

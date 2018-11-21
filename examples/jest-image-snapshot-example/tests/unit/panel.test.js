@@ -1,14 +1,18 @@
-const configureTest = require('../../test-settings');
+const pti = require('puppeteer-to-istanbul');
 
 describe('Panel tests', async () => {
-    let extensions;
-    let visualCheck;
-
     beforeAll(async () => {
-        ({ page, extensions, visualCheck } = await configureTest(
-            __dirname,
-            page
-        ));
+        await runSetup();
+    });
+
+    afterAll(async () => {
+        const [jsCoverage, cssCoverage] = await Promise.all([
+            page.coverage.stopJSCoverage(),
+            page.coverage.stopCSSCoverage()
+        ]);
+
+        console.log('writing', pti);
+        pti.write([...jsCoverage, ...cssCoverage]);
     });
 
     describe('Simple mode', async () => {

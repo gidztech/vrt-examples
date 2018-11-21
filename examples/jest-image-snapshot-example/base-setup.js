@@ -1,5 +1,5 @@
 const express = require('express');
-const { setup: setupPuppeteer } = require('jest-environment-puppeteer');
+const { setup: setupPuppeteer } = require('jest-puppeteer-docker');
 const path = require('path');
 
 module.exports = testType => async () => {

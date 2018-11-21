@@ -1,5 +1,3 @@
-const configureTest = require('../../test-settings');
-
 const container = '.todoapp';
 const input = 'header input';
 const listItem = '.todo-list li';
@@ -10,14 +8,8 @@ const secondItem = `${listItem}:nth-of-type(2)`;
 const todoCount = '.todo-count';
 
 describe('Add a todo item', () => {
-    let extensions;
-    let visualCheck;
-
     beforeAll(async () => {
-        ({ page, extensions, visualCheck } = await configureTest(
-            __dirname,
-            page
-        ));
+        await runSetup();
     });
 
     it('typing text and hitting enter key adds new item', async () => {
