@@ -3,10 +3,10 @@ const path = require('path');
 const { networkInterfaces } = require('os');
 
 module.exports = {
-    start: ({ port = 3000, testType = 'unit' } = {}) => {
+    start: ({ port = 3000, testType = 'component' } = {}) => {
         const app = express();
 
-        const directory = testType === 'unit' ? 'dist' : 'app';
+        const directory = testType === 'component' ? 'dist' : 'app';
 
         app.use(express.static(path.join(__dirname, '../../', directory)));
 

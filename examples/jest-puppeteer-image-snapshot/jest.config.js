@@ -4,7 +4,9 @@ module.exports = {
     preset: 'jest-puppeteer-docker',
     setupTestFrameworkScriptFile: './setup-tests.js',
     globalSetup:
-        testType === 'unit' ? './unit-test-setup.js' : './e2e-test-setup.js',
+        testType === 'component'
+            ? './component-test-setup.js'
+            : './e2e-test-setup.js',
     globalTeardown: './teardown.js',
     reporters: [
         'default',
@@ -12,11 +14,13 @@ module.exports = {
             './node_modules/jest-html-reporter',
             {
                 outputPath:
-                    testType === 'unit'
-                        ? './report/unit-summary.html'
+                    testType === 'component'
+                        ? './report/component-summary.html'
                         : './report/e2e-summary.html',
                 pageTitle:
-                    testType === 'unit' ? 'Unit Tests' : 'End-to-end Tests',
+                    testType === 'component'
+                        ? 'Component Tests'
+                        : 'End-to-end Tests',
                 includeFailureMsg: true,
                 customScriptPath: './inject-fail-images.js'
             }

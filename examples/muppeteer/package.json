@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "unit-test": "node run-tests.js -u",
-    "e2e-test": "node run-tests.js - e"
+    "component-test": "node run-tests.js -c",
+    "e2e-test": "node run-tests.js -e"
   },
   "author": "",
   "license": "ISC",

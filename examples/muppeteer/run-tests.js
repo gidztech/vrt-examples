@@ -4,19 +4,19 @@ const program = require('commander');
 
 program
     .version('0.0.1')
-    .option('-u, --unit', 'Run unit tests')
+    .option('-c, --component', 'Run component tests')
     .option('-e, --e2e', 'Run e2e tests')
     .parse(process.argv);
 
 (async () => {
-    const testType = program.unit ? 'unit' : 'e2e';
+    const testType = program.component ? 'component' : 'e2e';
 
     const serverInstance = await server.start({
         port: 3000,
         testType
     });
 
-    const testDir = testType === 'unit' ? 'tests/unit' : 'tests/e2e';
+    const testDir = testType === 'component' ? 'tests/component' : 'tests/e2e';
 
     const launcher = await ConfigureLauncher({
         testPathPattern: `${testDir}/*.test.js`,

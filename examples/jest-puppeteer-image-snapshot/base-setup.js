@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = testType => async () => {
     const app = express();
-    const directory = testType === 'unit' ? 'dist' : 'app';
+    const directory = testType === 'component' ? 'dist' : 'app';
     app.use(express.static(path.join(__dirname, '../../', directory)));
 
     app.get('/', (req, res) => {
