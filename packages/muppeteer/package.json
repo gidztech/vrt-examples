@@ -1,5 +1,5 @@
 {
-  "name": "muppeteer-example",
+  "name": "@vrt-examples/muppeteer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,5 +14,6 @@
     "express": "^4.16.3",
     "muppeteer": "^1.2.2"
   },
+  "private": true,
   "devDependencies": {}
 }
