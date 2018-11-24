@@ -18,7 +18,7 @@ program
 
     const testDir = testType === 'component' ? 'tests/component' : 'tests/e2e';
 
-    const launcher = await ConfigureLauncher({
+    const launcher = await new ConfigureLauncher({
         testPathPattern: `${testDir}/*.test.js`,
         reportDir: `${testDir}/report`,
         componentTestUrlFactory: () => `http://${server.IP}:3000`,
@@ -28,5 +28,5 @@ program
         onFinish: () => server.stop(serverInstance)
     });
 
-    await launcher.launch();
+    launcher.run();
 })();

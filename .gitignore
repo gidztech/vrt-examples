@@ -14,3 +14,4 @@ examples/jest-puppeteer-image-snapshot/tests/**/screenshots/__diff_output__
 .nyc_output
 coverage/
 report/
+lerna-debug.log

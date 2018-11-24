@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "node setup.js",
+    "bootstrap": "lerna bootstrap --hoist",
     "component-dev": "webpack-dev-server --config ./webpack.config.js --mode development",
     "component-build": "webpack --mode production",
     "component-test-muppeteer": "lerna exec --scope @vrt-examples/muppeteer -- npm run component-test",

@@ -11,7 +11,7 @@ module.exports = {
     reporters: [
         'default',
         [
-            './node_modules/jest-html-reporter',
+            '<rootDir>/../../node_modules/jest-html-reporter',
             {
                 outputPath:
                     testType === 'component'
