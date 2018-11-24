@@ -8,5 +8,5 @@ All examples use the same base project, a locally served React component for the
 Instructions for running tests and configurations are provided in each example.
 
 ## Examples
-1. [Jest Puppeteer Docker with Jest Image Snapshot Example](https://github.com/gidztech/vrt-examples/blob/master/examples/jest-puppeteer-image-snapshot/README.md)
-2. [Muppeteer Example](https://github.com/gidztech/vrt-examples/blob/master/examples/muppeteer/README.md)
+1. [Jest Puppeteer Docker with Jest Image Snapshot Example](https://github.com/gidztech/vrt-examples/tree/master/packages/jest-puppeteer-image-snapshot)
+2. [Muppeteer Example](https://github.com/gidztech/vrt-examples/tree/master/packages/muppeteer)
