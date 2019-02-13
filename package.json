@@ -1,63 +1,64 @@
 {
-  "name": "vrt-examples",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "postinstall": "node setup.js",
-    "bootstrap": "lerna bootstrap --hoist",
-    "component-dev": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "component-build": "webpack --mode production",
-    "component-test-muppeteer": "lerna exec --scope @vrt-examples/muppeteer -- npm run component-test",
-    "component-test-jest": "lerna exec --scope @vrt-examples/jest-puppeteer-image-snapshot -- npm run component-test",
-    "e2e-test-muppeteer": "lerna exec --scope @vrt-examples/muppeteer -- npm run e2e-test",
-    "e2e-test-jest": "lerna exec --scope @vrt-examples/jest-puppeteer-image-snapshot -- npm run e2e-test",
-    "lint": "eslint **/*.js --fix",
-    "prettier": "prettier --write --single-quote --tab-width=4 */**.js",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write --single-quote --tab-width=4",
-      "git add"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gidztech/vrt-examples.git"
-  },
-  "author": "Gideon Pyzer",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gidztech/vrt-examples/issues"
-  },
-  "homepage": "https://github.com/gidztech/vrt-examples#readme",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.9.1",
-    "html-webpack-plugin": "^3.2.0",
-    "husky": "^0.14.3",
-    "lerna": "^2.11.0",
-    "lint-staged": "^7.1.3",
-    "prettier": "^1.13.4",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.11.1",
-    "webpack-cli": "^3.0.2",
-    "webpack-dev-server": "^3.1.10"
-  },
-  "dependencies": {
-    "colors": "^1.3.0",
-    "extract-zip": "^1.6.7",
-    "prop-types": "^15.6.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0"
-  }
+    "name": "vrt-examples",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "node setup.js",
+        "bootstrap": "lerna bootstrap --hoist",
+        "component-dev": "webpack-dev-server --config ./webpack.config.js --mode development",
+        "component-build": "webpack --mode production",
+        "component-test-muppeteer": "lerna exec --scope @vrt-examples/muppeteer -- npm run component-test",
+        "component-test-jest": "lerna exec --scope @vrt-examples/jest-puppeteer-image-snapshot -- npm run component-test",
+        "e2e-test-muppeteer": "lerna exec --scope @vrt-examples/muppeteer -- npm run e2e-test",
+        "e2e-test-jest": "lerna exec --scope @vrt-examples/jest-puppeteer-image-snapshot -- npm run e2e-test",
+        "lint": "eslint '**/*.{js,jsx}' --fix",
+        "prettier": "prettier --write --single-quote --tab-width=4 */**.js",
+        "precommit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.js": [
+            "prettier --write --single-quote --tab-width=4",
+            "git add"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gidztech/vrt-examples.git"
+    },
+    "author": "Gideon Pyzer",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/gidztech/vrt-examples/issues"
+    },
+    "homepage": "https://github.com/gidztech/vrt-examples#readme",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "css-loader": "^0.28.11",
+        "eslint": "^5.13.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-config-prettier": "^4.0.0",
+        "eslint-plugin-import": "^2.16.0",
+        "eslint-plugin-prettier": "^3.0.1",
+        "eslint-plugin-react": "^7.12.4",
+        "html-webpack-plugin": "^3.2.0",
+        "husky": "^0.14.3",
+        "lerna": "^2.11.0",
+        "lint-staged": "^7.1.3",
+        "prettier": "^1.13.4",
+        "style-loader": "^0.21.0",
+        "webpack": "^4.11.1",
+        "webpack-cli": "^3.0.2",
+        "webpack-dev-server": "^3.1.10"
+    },
+    "dependencies": {
+        "colors": "^1.3.0",
+        "extract-zip": "^1.6.7",
+        "prop-types": "^15.6.1",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0"
+    }
 }

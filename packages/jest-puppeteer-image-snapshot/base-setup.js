@@ -2,7 +2,7 @@ const express = require('express');
 const { setup: setupPuppeteer } = require('jest-puppeteer-docker');
 const path = require('path');
 
-module.exports = testType => async () => {
+module.exports = testType => async jestConfig => {
     const app = express();
     const directory = testType === 'component' ? 'dist' : 'app';
     app.use(express.static(path.join(__dirname, '../../', directory)));
@@ -13,5 +13,5 @@ module.exports = testType => async () => {
 
     global.__SERVER__ = app.listen(3000);
 
-    await setupPuppeteer();
+    await setupPuppeteer(jestConfig);
 };
