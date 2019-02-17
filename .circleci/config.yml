@@ -11,7 +11,7 @@ jobs:
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
             - run:
-                  name: Install Node 10.15.1
+                  name: Install Node and packages
                   command: |
                       curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
                       export NVM_DIR="/opt/circleci/.nvm"
@@ -20,9 +20,7 @@ jobs:
                       nvm alias default v10.15.1
                       echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
                       echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> $BASH_ENV
-                      nvm use 10.15.1
-            - run: node -v
-            - run: npm install
+                      npm install
             - save_cache:
                   paths:
                       - node_modules
