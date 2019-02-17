@@ -13,40 +13,26 @@ jobs:
             - run:
                   name: Install Node and packages
                   command: |
-                      curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-                      export NVM_DIR="/opt/circleci/.nvm"
-                      [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-                      nvm install v10.15.1
-                      nvm alias default v10.15.1
-                      echo $BASH_ENV
-                      echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-                      echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> $BASH_ENV
-            - run:
-                  name: Install packages
-                  command: |
-                      source "$NVM_DIR/nvm.sh"
-                      npm install
+                      wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+                      export NVM_DIR=$HOME/.nvm
+                      touch $HOME/.nvmrc
+                      source $NVM_DIR/nvm.sh
+                      nvm install 10.15.1
+                      nvm use 10.15.1 && nvm alias default 10.15.1
+            - run: npm install
             - save_cache:
                   paths:
                       - node_modules
                   key: v1-dependencies-{{ checksum "package.json" }}
             - run:
                   name: Jest component tests
-                  command: |
-                      source "$NVM_DIR/nvm.sh"
-                      npm run bootstrap; npm run component-test-jest
+                  command: npm run bootstrap; npm run component-test-jest
             - run:
                   name: Jest end-to-end tests
-                  command: |
-                      source "$NVM_DIR/nvm.sh"
-                      npm run bootstrap; npm run e2e-test-jest
+                  command: npm run bootstrap; npm run e2e-test-jest
             - run:
                   name: Muppeteer component tests
-                  command: |
-                      source "$NVM_DIR/nvm.sh"
-                      npm run bootstrap; npm run component-test-muppeteer
+                  command: npm run bootstrap; npm run component-test-muppeteer
             - run:
                   name: Muppeteer end-to-end tests
-                  command: |
-                      source "$NVM_DIR/nvm.sh"
-                      npm run bootstrap; npm run e2e-test-muppeteer
+                  command: npm run bootstrap; npm run e2e-test-muppeteer
