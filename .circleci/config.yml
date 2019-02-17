@@ -1,8 +1,8 @@
 version: 2
 jobs:
     build:
-        docker:
-            - image: circleci/node:11.9.0
+        machine:
+            docker_layer_caching: true
         steps:
             - checkout
             - restore_cache:
@@ -16,7 +16,15 @@ jobs:
                       - node_modules
                   key: v1-dependencies-{{ checksum "package.json" }}
             - setup_remote_docker
-
-            - run: |
-                  docker run -d --name my-app my-app
-                  docker run --network container:my-app appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
+            - run:
+                  name: Jest component tests
+                  command: npm run bootstrap; npm run component-test-jest
+            - run:
+                  name: Jest end-to-end tests
+                  command: npm run bootstrap; npm run e2e-test-jest
+            - run:
+                  name: Muppeteer component tests
+                  command: npm run bootstrap; npm run component-test-muppeteer
+            - run:
+                  name: Muppeteer end-to-end tests
+                  command: npm run bootstrap; npm run e2e-test-muppeteer
