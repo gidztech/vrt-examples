@@ -22,10 +22,10 @@ jobs:
                       echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> $BASH_ENV
                       source ~/.nvm/nvm.sh
             - run:
-              name: Install dependencies
-              command: |
-                  source ~/.nvm/nvm.sh
-                  npm install
+                  name: Install dependencies
+                  command: |
+                      source ~/.nvm/nvm.sh
+                      npm install
             - save_cache:
                   paths:
                       - node_modules
