@@ -21,11 +21,8 @@ jobs:
                       echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
                       echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> $BASH_ENV
                       source ~/.nvm/nvm.sh
-            - run:
-                  name: Install dependencies
-                  command: |
-                      source ~/.nvm/nvm.sh
-                      npm install
+                      echo 'source ~/.nvm/nvm.sh' >> $BASH_ENV
+            - run: npm install
             - save_cache:
                   paths:
                       - node_modules
