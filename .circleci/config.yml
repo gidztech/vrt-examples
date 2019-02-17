@@ -18,6 +18,7 @@ jobs:
                       [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
                       nvm install v10.15.1
                       nvm alias default v10.15.1
+                      echo $BASH_ENV
                       echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
                       echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> $BASH_ENV
                       echo 'source "$NVM_DIR/nvm.sh"' >> $BASH_ENV
