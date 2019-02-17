@@ -18,7 +18,12 @@ jobs:
                       chmod +x ./load-nvm.sh
                       ./load-nvm.sh
                       nvm install v8.11.3
-            - run: npm install
+            - run:
+                  name: Install packages
+                  command: |
+                      ./load-nvm.sh
+                      nvm use 8.11.3
+                      npm install
             - save_cache:
                   paths:
                       - node_modules
