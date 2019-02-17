@@ -21,22 +21,32 @@ jobs:
                       echo $BASH_ENV
                       echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
                       echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> $BASH_ENV
-                      echo 'source "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+            - run:
+                  name: Install packages
+                  command: |
                       source "$NVM_DIR/nvm.sh"
-            - run: npm install
+                      npm install
             - save_cache:
                   paths:
                       - node_modules
                   key: v1-dependencies-{{ checksum "package.json" }}
             - run:
                   name: Jest component tests
-                  command: npm run bootstrap; npm run component-test-jest
+                  command: |
+                      source "$NVM_DIR/nvm.sh"
+                      npm run bootstrap; npm run component-test-jest
             - run:
                   name: Jest end-to-end tests
-                  command: npm run bootstrap; npm run e2e-test-jest
+                  command: |
+                      source "$NVM_DIR/nvm.sh"
+                      npm run bootstrap; npm run e2e-test-jest
             - run:
                   name: Muppeteer component tests
-                  command: npm run bootstrap; npm run component-test-muppeteer
+                  command: |
+                      source "$NVM_DIR/nvm.sh"
+                      npm run bootstrap; npm run component-test-muppeteer
             - run:
                   name: Muppeteer end-to-end tests
-                  command: npm run bootstrap; npm run e2e-test-muppeteer
+                  command: |
+                      source "$NVM_DIR/nvm.sh"
+                      npm run bootstrap; npm run e2e-test-muppeteer
