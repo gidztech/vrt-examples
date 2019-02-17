@@ -17,7 +17,6 @@ jobs:
                   key: v1-dependencies-{{ checksum "package.json" }}
             - setup_remote_docker
 
-            - run:
-              name: "Start Service and Check That it’s Running"
-              command: |
+            - run: |
                   docker run -d --name my-app my-app
+                  docker run --network container:my-app appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
