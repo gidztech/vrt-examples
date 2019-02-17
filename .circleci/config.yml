@@ -1,8 +1,8 @@
 version: 2
 jobs:
     build:
-        machine:
-            - image: circleci/classic:latest
+        docker:
+            - image: circleci/node:11.9.0
         steps:
             - checkout
             - restore_cache:
@@ -17,14 +17,7 @@ jobs:
                   key: v1-dependencies-{{ checksum "package.json" }}
             - setup_remote_docker
             - run:
-                  name: Jest component tests
-                  command: npm run bootstrap; npm run component-test-jest
-            - run:
-                  name: Jest end-to-end tests
-                  command: npm run bootstrap; npm run e2e-test-jest
-            - run:
-                  name: Muppeteer component tests
-                  command: npm run bootstrap; npm run component-test-muppeteer
-            - run:
-                  name: Muppeteer end-to-end tests
-                  command: npm run bootstrap; npm run e2e-test-muppeteer
+              name: "Start Service and Check That it’s Running"
+              command: |
+                  docker run -d --name my-app my-app
+                  npm run bootstrap; npm run component-test-jest
