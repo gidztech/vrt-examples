@@ -21,4 +21,3 @@ jobs:
               name: "Start Service and Check That it’s Running"
               command: |
                   docker run -d --name my-app my-app
-                  npm run bootstrap; npm run component-test-jest
