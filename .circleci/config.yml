@@ -20,7 +20,12 @@ jobs:
                       nvm alias default v10.15.1
                       echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
                       echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> $BASH_ENV
-                      npm install
+                      source ~/.nvm/nvm.sh
+            - run:
+              name: Install dependencies
+              command: |
+                  source ~/.nvm/nvm.sh
+                  npm install
             - save_cache:
                   paths:
                       - node_modules
