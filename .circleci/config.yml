@@ -14,14 +14,14 @@ jobs:
                   # https://discuss.circleci.com/t/how-to-change-node-version-in-circleci-2-0/17455/4
                   name: Install node
                   command: |
-                  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-                  export NVM_DIR="$HOME/.nvm"
-                  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                  nvm install 10.9.0
-                  nvm alias default 10.9.0
-                  # Adding to $BASH_ENV
-                  echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-                  echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
+                      curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+                      export NVM_DIR="$HOME/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                      nvm install 10.9.0
+                      nvm alias default 10.9.0
+                      # Adding to $BASH_ENV
+                      echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+                      echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
             - run: npm install
             - save_cache:
                   paths:
