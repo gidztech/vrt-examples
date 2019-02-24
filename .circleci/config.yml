@@ -22,4 +22,21 @@ jobs:
                   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                   nvm install v8.11.3
                   nvm alias default v8.11.3
-                  npm version
+            - run: |
+                  export NVM_DIR="/opt/circleci/.nvm"
+                  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                  nvm install v8.11.3
+                  nvm alias default v8.11.3
+                  npm install
+            - save_cache:
+                  paths:
+                      - node_modules
+                  key: v1-dependencies-{{ checksum "package.json" }}
+            - run:
+                  name: Jest component tests
+                  command: |
+                      export NVM_DIR="/opt/circleci/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                      nvm install v8.11.3
+                      nvm alias default v8.11.3
+                      npm run bootstrap; npm run component-test-jest
