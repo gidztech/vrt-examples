@@ -11,31 +11,11 @@ jobs:
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
             - run:
-                  # https://discuss.circleci.com/t/how-to-change-node-version-in-circleci-2-0/17455/4
-                  name: Install node
+                  name: Install NVM
                   command: |
-                      curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-                      export NVM_DIR="$HOME/.nvm"
-                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                      nvm install 10.9.0
-                      nvm alias default 10.9.0
-                      # Adding to $BASH_ENV
-                      echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-                      echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
-            - run: npm install
-            - save_cache:
-                  paths:
-                      - node_modules
-                  key: v1-dependencies-{{ checksum "package.json" }}
-            - run:
-                  name: Jest component tests
-                  command: npm run bootstrap; npm run component-test-jest
-            - run:
-                  name: Jest end-to-end tests
-                  command: npm run bootstrap; npm run e2e-test-jest
-            - run:
-                  name: Muppeteer component tests
-                  command: npm run bootstrap; npm run component-test-muppeteer
-            - run:
-                  name: Muppeteer end-to-end tests
-                  command: npm run bootstrap; npm run e2e-test-muppeteer
+                      ./load-nvm.sh
+                      nvm install v8.11.3
+                      nvm alias default v8.11.3
+            - run: |
+                  ./load-nvm.sh
+                  npm version
