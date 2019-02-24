@@ -13,11 +13,11 @@ jobs:
                       - v1-dependencies-
             - run:
                   name: Install Node v10.15.1
-                  command: |
-                      chmod +x load-nvm.sh
-                      ./load-nvm.sh
-                      nvm install v10.15.1
-                      nvm alias default v10.15.1
+                  commands: |
+                      - chmod +x load-nvm.sh
+                      - ./load-nvm.sh
+                      - nvm install v10.15.1
+                      - nvm alias default v10.15.1
             - run:
                   name: Install dependencies
                   command: |
