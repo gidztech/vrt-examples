@@ -13,7 +13,7 @@ jobs:
                       - v1-dependencies-
             - run:
                   name: Install Node v10.15.1
-                  commands: |
+                  commands:
                       - chmod +x load-nvm.sh
                       - ./load-nvm.sh
                       - nvm install v10.15.1
