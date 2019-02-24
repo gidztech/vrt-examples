@@ -11,23 +11,19 @@ jobs:
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
             - run:
-                  name: Install NVM
+                  name: Install Node v10.15.1
                   command: |
                       export NVM_DIR="/opt/circleci/.nvm"
                       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                      nvm install v8.11.3
-                      nvm alias default v8.11.3
-            - run: |
-                  export NVM_DIR="/opt/circleci/.nvm"
-                  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                  nvm install v8.11.3
-                  nvm alias default v8.11.3
-            - run: |
-                  export NVM_DIR="/opt/circleci/.nvm"
-                  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                  nvm install v8.11.3
-                  nvm alias default v8.11.3
-                  npm install
+                      nvm install v10.15.1
+                      nvm alias default v10.15.1
+
+            - run:
+                  name: Install dependencies
+                  command: |
+                      export NVM_DIR="/opt/circleci/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                      npm install
             - save_cache:
                   paths:
                       - node_modules
@@ -37,6 +33,22 @@ jobs:
                   command: |
                       export NVM_DIR="/opt/circleci/.nvm"
                       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                      nvm install v8.11.3
-                      nvm alias default v8.11.3
                       npm run bootstrap; npm run component-test-jest
+            - run:
+                  name: Jest end-to-end tests
+                  command: |
+                      export NVM_DIR="/opt/circleci/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                      npm run bootstrap; npm run e2e-test-jest
+            - run:
+                  name: Muppeteer component tests
+                  command: |
+                      export NVM_DIR="/opt/circleci/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                      npm run bootstrap; npm run component-test-muppeteer
+            - run:
+                  name: Muppeteer end-to-end tests
+                  command: |
+                      export NVM_DIR="/opt/circleci/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                      npm run bootstrap; npm run e2e-test-muppeteer
