@@ -14,7 +14,7 @@ jobs:
             - run:
                   name: Install Node v10.15.1
                   command: |
-                      set +e
+                      sudo chmod +x ./.circleci/load-nvm.sh
                       ./.circleci/load-nvm.sh
                       nvm install v10.15.1
                       nvm alias default v10.15.1
